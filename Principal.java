@@ -46,29 +46,30 @@ public class Principal {
 	}
 
 	private void initialize() {
-		JTextField columns = new JTextField();
-		JTextField rows = new JTextField();
-		JTextField cantMinas = new JTextField();
-		Object[] input = { "Columnas:", columns, "Filas:", rows, "CantidadMinas:", cantMinas };
-
-		while (columns.getText().trim().equals("") || rows.getText().trim().equals("")
-				|| cantMinas.getText().trim().equals("")) {
-			JOptionPane.showMessageDialog(null, input);
-			try {
-				columnas = Integer.parseInt(columns.getText());
-				filas = Integer.parseInt(rows.getText());
-				minas = Integer.parseInt(cantMinas.getText());
-				if(columnas<10 || filas<10 || minas<10) {
-					columns.setText("");
-					rows.setText("");
-					cantMinas.setText("");
-				}
-			} catch (NumberFormatException err) {
-				columns.setText("");
-				rows.setText("");
-				cantMinas.setText("");
-			}
-		}
+		//marcarVacios(0,0);
+//		JTextField columns = new JTextField();
+//		JTextField rows = new JTextField();
+//		JTextField cantMinas = new JTextField();
+//		Object[] input = { "Columnas:", columns, "Filas:", rows, "CantidadMinas:", cantMinas };
+//
+//		while (columns.getText().trim().equals("") || rows.getText().trim().equals("")
+//				|| cantMinas.getText().trim().equals("")) {
+//			JOptionPane.showMessageDialog(null, input);
+//			try {
+//				columnas = Integer.parseInt(columns.getText());
+//				filas = Integer.parseInt(rows.getText());
+//				minas = Integer.parseInt(cantMinas.getText());
+//				if(columnas<10 || filas<10 || minas<10) {
+//					columns.setText("");
+//					rows.setText("");
+//					cantMinas.setText("");
+//				}
+//			} catch (NumberFormatException err) {
+//				columns.setText("");
+//				rows.setText("");
+//				cantMinas.setText("");
+//			}
+//		}
 		auxiliar=new boolean[columnas][filas];
 		cantFrames = (columnas * filas) - minas;
 		frame = new JFrame("Buscaminas");
@@ -169,9 +170,6 @@ public class Principal {
 	}
 	
 	private void marcarVacios(int i,int j) {
-		
-	
-		
 		for (int m = -1; m < 2; m++) {
 			for (int n = -1; n < 2; n++) {
 				if (i + m >= 0 && i + m < filas && j + n >= 0 && j + n < columnas) {
